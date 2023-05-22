@@ -1,9 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Landing from './components/Landing/Landing';
+import Home from './components/Home/Home'
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+      <Routes>
+        <Route path='/' element={<Landing/>}/>
+        <Route path='/home' element={<Home />}/>
+      </Routes>
     </div>
   );
 }

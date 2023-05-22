@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.button {
+    width: 30px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
