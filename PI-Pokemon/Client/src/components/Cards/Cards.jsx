@@ -1,67 +1,50 @@
 // import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllPokemon } from "../../redux/actions";
-// import Card from "../Card/Card";
-
-
-// const Cards = () => {
-
-//     let [pagination, setPagination] = useState(0);
-
-//     const dispatch = useDispatch();
-
-//     const allPokemons = useSelector((state) => state.allPokemons); 
-    
-//     useEffect(() => {
-//         dispatch(getAllPokemon(pagination))
-//     }, [])
-
-
-
-//     return (
-//         <div>
-//             {
-//                 allPokemons?.map((pokemon, index) => {
-//                     return(
-//                         <Card 
-//                             key = {index}
-//                             name= {pokemon.name}
-//                         />
-//                     )
-//                 })
-//             }
-//         </div>
-//     )
-// };
-
-// export default Cards;
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllPokemon } from "../../redux/actions";
 import Card from "../Card/Card";
+// import axios from "axios";
 
 
-const Cards = () => {
+const Cards = (props) => {
 
-    let [pagination, setPagination] = useState(0);
+    // let [pagination, setPagination] = useState(0);
 
-    const dispatch = useDispatch();
+    // let [pokemones, setPokemones] = useState([]);
+
+    // const dispatch = useDispatch();
+
+    // const allPokemons = useSelector((state) => state.allPokemons); 
+
+
+    // const getPokemones = async (offset) => {
+    //     const  data  = await axios(`http://localhost:3001/pokemons?offset=${offset}`);
+    //     // let results = data.results;
+        
+    //     setPokemones(pokemones => [...pokemones, data]);
+    // };
     
-    const allPokemons = useSelector((state) => state.allPokemons); 
-    
-    useEffect(() => {
-        dispatch(getAllPokemon(pagination))
-    }, [])
+    // useEffect( () => {
+    //    getPokemones(20)
+    // }, [])
 
+    // eslint-disable-next-line react/prop-types
+    const characters = props.pokemones;
+    // eslint-disable-next-line react/prop-types
+    const info = characters?.map(element => {
+        return element.data;
+    })
 
+    console.log(info);
 
     return (
-        <div>
+        <div className="container">
             {
-                allPokemons?.map((pokemon, index) => {
+                // eslint-disable-next-line react/prop-types
+                info.map((pokemon, index) => {
                     return(
                         <Card 
                             key = {index}
+                            // eslint-disable-next-line react/prop-types
                             name= {pokemon.name}
                         />
                     )
@@ -72,3 +55,5 @@ const Cards = () => {
 };
 
 export default Cards;
+
+

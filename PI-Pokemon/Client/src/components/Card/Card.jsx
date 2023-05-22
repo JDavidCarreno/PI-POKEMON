@@ -3,7 +3,7 @@
 const Card = (props) => {
 
     // eslint-disable-next-line react/prop-types
-    const { name, image, types } = props;
+    const name = props.name;
 
     return (
         <div>

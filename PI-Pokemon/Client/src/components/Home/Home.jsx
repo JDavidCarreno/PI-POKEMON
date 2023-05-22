@@ -1,13 +1,16 @@
+/* eslint-disable react/prop-types */
 import Cards from '../Cards/Cards';
 import Nav from '../Nav/Nav';
 import styles from "./Home.module.css";
 
-const Home = () => {
+
+const Home = (props) => {
+
+
     return (
         <div className={styles.container}>
-            <h1>HOME</h1>
             <Nav />
-            <Cards/>
+            <Cards pokemones = {props.pokemones}/>
         </div>
     )
 };

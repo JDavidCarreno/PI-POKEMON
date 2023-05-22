@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 // import ReactDOM from 'react-dom';
 import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
@@ -22,11 +22,15 @@ import store from './redux/store';
 const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>    
-    </Provider>
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>    
+        </Provider>
+
+    </React.StrictMode>
+    
     
 );
 

@@ -7,11 +7,11 @@ export const getAllPokemon = (offset) => {
     const endpoint = 'http://localhost:3001/pokemons?offset=';
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint + offset);
-            const results = data.results;
+            const data  = await axios.get(endpoint + offset);
+
             return dispatch({
                 type: ALL_POKEMON,
-                payload: results
+                payload: data
             })
         } catch (error) {
             return {error: error.message}
