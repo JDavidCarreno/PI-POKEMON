@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
         case ALL_POKEMON:
             return {
                 ...state,
-                allPokemons: action.payload
+                allPokemons: [...initialState.allPokemons, action.payload]
             }
     }
 };
