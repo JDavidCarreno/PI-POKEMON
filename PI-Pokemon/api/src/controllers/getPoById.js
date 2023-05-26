@@ -19,7 +19,7 @@ const getPoById = async(req, res) => {
 
         const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${id}/`);
 
-            return res.status(200).json({id: data.id, name: data.name, types: data.types, height: data.height});
+            return res.status(200).json({id: data.id, name: data.name, types: data.types, height: data.height, stats: data.stats});
 
 
     } catch (error) {

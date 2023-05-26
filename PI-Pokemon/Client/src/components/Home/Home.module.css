@@ -1,9 +1,0 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    color: rgb(0, 0, 0);
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
-}

@@ -1,7 +1,8 @@
-import { ALL_POKEMON } from "./actions";
+import { ALL_POKEMON, POKEMON_BY_NAME } from "./actions";
 
 const initialState = {
-    allPokemons: []
+    allPokemons: [],
+    poke: [{}]
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,17 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 allPokemons: [...initialState.allPokemons, action.payload]
             }
+
+        case POKEMON_BY_NAME:
+            return {
+                ...state,
+                poke: [action.payload]
+            }
+
+        default: 
+        return{
+            ...state
+        }
     }
 };
 

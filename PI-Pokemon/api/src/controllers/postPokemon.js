@@ -5,9 +5,10 @@ const postPokemon = async(req, res) => {
     try {
         const { name, imagen, vida, ataque, defensa, velocidad, altura, peso, types } = req.body;
 
+        newPokemon.addTypes(types);
+
         const newPokemon = await Pokemon.create({id: uuidv4(), name, imagen, vida, ataque, defensa,velocidad, altura, peso });
 
-        newPokemon.addTypes(types);
 
         return res.status(200).json(newPokemon);
 

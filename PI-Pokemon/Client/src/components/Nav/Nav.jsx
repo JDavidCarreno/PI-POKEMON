@@ -1,10 +1,17 @@
+
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Nav.module.css"
 
-const Nav = () => {
+
+
+// eslint-disable-next-line react/prop-types
+const Nav = ({onSearch, getAll}) => {
+
+
     return (
         <div className={styles.container}>
-            <SearchBar/>
+            <SearchBar onSearch={onSearch}/>
+            <button onClick={() => getAll()}>ALL</button>
         </div>
     )
 };
