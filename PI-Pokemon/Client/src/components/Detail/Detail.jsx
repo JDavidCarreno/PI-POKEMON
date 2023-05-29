@@ -60,6 +60,7 @@ const Detail = ({getAll}) => {
                 </div>
             </div>
             <h3>WIGHT: {pokemon.weight}</h3>
+            <h4>Id: {pokemon.id}</h4>
 {/* 
             <div>
                 <button onClick={() => getAll()}>See all pokemons!</button>
