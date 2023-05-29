@@ -1,4 +1,4 @@
-import { ALL_POKEMON, FILTER_POKEMON_TYPE, POKEMON_BY_NAME } from "./actions";
+import { ALL_POKEMON, POKEMON_BY_NAME } from "./actions";
 
 // const getInfo = async(url) => {
 //     const info = await axios(url);
