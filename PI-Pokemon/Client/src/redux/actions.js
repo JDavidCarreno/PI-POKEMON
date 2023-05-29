@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const ALL_POKEMON = 'ALL_POKEMON';
 export const POKEMON_BY_NAME = 'POKEMON_BY_NAME';
+export const FILTER_POKEMON_TYPE = 'FILTER_POKEMON_TYPE';
 
 export const getAllPokemon = () => {
     return async (dispatch) => {
@@ -32,5 +33,12 @@ export const getPokemonByName = (name) => {
         }
     }
 };
+
+export const filterPokemonType = (type) => {
+    return {
+        type: FILTER_POKEMON_TYPE,
+        payload: type
+    }
+}
 
 

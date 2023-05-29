@@ -7,10 +7,11 @@ import styles from './Pokemones.module.css';
 import Pagination from '../Pagination/Pagination';
 
 // eslint-disable-next-line react/prop-types
-const Pokemones = ({ pokemons, length, onStart }) => {
+const Pokemones = ({ pokemons, length, onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, setCurrentPage }) => {
 
-    const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
-    const [currentPage, setCurrentPage] = useState(1);
+    // const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
+    // const [currentPage, setCurrentPage] = useState(1);
+
 
     const lastIndex = currentPage * pokemonsPerPage;
     const firstIndex = lastIndex - pokemonsPerPage
@@ -18,7 +19,7 @@ const Pokemones = ({ pokemons, length, onStart }) => {
     useEffect(() => {
         onStart();
     }, []);
-
+    
     return(
         <div className={styles.container}>
             <div className={styles.cards}>
@@ -28,13 +29,14 @@ const Pokemones = ({ pokemons, length, onStart }) => {
                         return(
                             <Card 
                                 key = {index}
+                                id ={pokemon.id}
                                 name = {pokemon.name}
                                 url = {pokemon.url}
-                                ataque={pokemon.ataque}
-                                defensa={pokemon.defensa}
+                                ataque={pokemon.attack}
+                                defensa={pokemon.defense}
                                 types={pokemon.types}
                                 image={pokemon.image}
-                                vida={pokemon.vida}
+                                vida={pokemon.hp}
                             />
                         )
                     }).slice(firstIndex, lastIndex)

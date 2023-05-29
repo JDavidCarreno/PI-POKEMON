@@ -1,18 +1,13 @@
-.container {
+.containerStats {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    margin: 20px;
-    gap: 1.5rem;
-
 }
 
-.cards {
+.containerLabels {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    margin: 20px;
-    gap: 1.5rem;
+    gap: 1rem;
 }

@@ -1,47 +1,47 @@
-import axios from "axios";
-import { useState } from "react";
+
 import styles from './Card.module.css';
+import { Link } from 'react-router-dom';
 
 
 // eslint-disable-next-line react/prop-types
-const Card = ({ name, url, ataque, defensa, types, image, vida}) => {
+const Card = ({ name, ataque, defensa, types, image, vida, id }) => {
     
-    const [info, setInfo] = useState({
-        detail: [],
-        image: '',
-        attack: 0,
-        defense: 0,
-        hp: 0
-    });
+    // const [info, setInfo] = useState({
+    //     detail: [],
+    //     image: '',
+    //     attack: 0,
+    //     defense: 0,
+    //     hp: 0
+    // });
 
-    const getInfo = async() => {
-        if (url) {
-            const info = await axios(url);
-            const detail = info.data;
-            setInfo({
-                detail: detail,
-                image: detail.sprites.front_default,
-                attack: detail.stats[1].base_stat,
-                defense: detail.stats[2].base_stat,
-                hp: detail.stats[0].base_stat
-            })
-        } else {
-            setInfo({
-                detail: [...info, types],
-                image: image,
-                attack: ataque,
-                defense: defensa,
-                hp: vida
-            })
-        }
-    };
+    // const getInfo = async() => {
+    //     if (url) {
+    //         const info = await axios(url);
+    //         const detail = info.data;
+    //         setInfo({
+    //             detail: detail,
+    //             image: detail.sprites.front_default,
+    //             attack: detail.stats[1].base_stat,
+    //             defense: detail.stats[2].base_stat,
+    //             hp: detail.stats[0].base_stat
+    //         });
+    //     } else {
+    //         setInfo({
+    //             detail: [...info, types],
+    //             image: image,
+    //             attack: ataque,
+    //             defense: defensa,
+    //             hp: vida
+    //         })
+    //     }
+    // };
 
-    getInfo();
+    // getInfo();
 
     return (
         <div className={styles.container}>
-            <h2>{name}</h2>
-            <div className={styles.types}>
+            <h2><Link to={`/detail/${id}`}> {name} </Link></h2>
+            {/* <div className={styles.types}>
                 {
                     info.detail.types?.map((type, index) => {
                         return (
@@ -49,20 +49,28 @@ const Card = ({ name, url, ataque, defensa, types, image, vida}) => {
                         )
                     })
                 }
-            </div>
-            <img src={info.image} alt={name} />
+            </div> */}
+            {
+                // eslint-disable-next-line react/prop-types
+                types?.map((type, index) => {
+                    return <h4 key={index}>{type}</h4>
+                })
+            }
+            {
+                image ? <img className={styles.img} src={image} alt={name} /> : <div className={styles.lds_dual_ring}></div>
+            }
             <div className={styles.powerContainer}>
                 <label>
                     ATT 
-                    <h5>{info.attack}</h5>
+                    <h5>{ataque}</h5>
                 </label>
                 <label>
                     DEF
-                    <h5>{info.defense}</h5>
+                    <h5>{defensa}</h5>
                 </label>
                 <label>
                     HP
-                    <h5>{info.hp}</h5>
+                    <h5>{vida}</h5>
                 </label>
             </div>
 

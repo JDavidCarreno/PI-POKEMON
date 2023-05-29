@@ -1,4 +1,9 @@
-import { ALL_POKEMON, POKEMON_BY_NAME } from "./actions";
+import { ALL_POKEMON, FILTER_POKEMON_TYPE, POKEMON_BY_NAME } from "./actions";
+
+// const getInfo = async(url) => {
+//     const info = await axios(url);
+//     const data = info.data
+// }
 
 const initialState = {
     allPokemons: [],
@@ -19,10 +24,19 @@ const reducer = (state = initialState, action) => {
                 poke: [action.payload]
             }
 
+        // case FILTER_POKEMON_TYPE:
+        //     let obj = initialState.allPokemons[0]?.data.map()
+
+
+            // return {
+            //     ...state,
+
+            // }
+
         default: 
-        return{
-            ...state
-        }
+            return{
+                ...state
+            }
     }
 };
 
