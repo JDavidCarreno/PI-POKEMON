@@ -1,14 +1,22 @@
-const { Pokemon } = require('../db');
+const { Pokemon, Type } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 
 const postPokemon = async(req, res) => {
     try {
-        const { name, imagen, vida, ataque, defensa, velocidad, altura, peso, types } = req.body;
+        const { name, image, hp, attack, defense, speed, weight, types } = req.body;
 
+        
+        const newPokemon = await Pokemon.create({id: uuidv4(), name, image, hp, attack, defense , speed, weight });
+        
         newPokemon.addTypes(types);
 
-        const newPokemon = await Pokemon.create({id: uuidv4(), name, imagen, vida, ataque, defensa,velocidad, altura, peso });
+        // const newPokemonn = await Pokemon.findByPk(newPokemon.id, {
+        //     include: Type
+        // });
 
+        // const typess = newPokemonn.Type.map((type) => type.name);
+
+        // newPokemonn.types = typess
 
         return res.status(200).json(newPokemon);
 

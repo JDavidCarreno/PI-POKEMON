@@ -17,6 +17,7 @@ router.get('/pokemons/', getPokemon);
 router.get('/pokemons/:id', getPoById);
 router.post('/pokemons/', postPokemon);
 router.get('/types', types);
+// router.get('/types/get', getTypes)
 
 
 

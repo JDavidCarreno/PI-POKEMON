@@ -7,7 +7,7 @@ const getPokemon = async(req, res) => {
         const { name } = req.query;
 
         if(!name) {
-          // const pokemons = await Pokemon.findAll();
+          const pokemons = await Pokemon.findAll();
           // const { data }  = await axios("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1281");
 
           // const { results } = data
@@ -42,7 +42,7 @@ const getPokemon = async(req, res) => {
                 })
             );
 
-            return res.json(pokeInfo);
+            return res.json(pokeInfo.concat(pokemons));
           
         };
 

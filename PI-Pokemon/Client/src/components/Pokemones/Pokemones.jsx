@@ -1,31 +1,97 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPokemon } from '../../redux/actions';
+import { filterOrigin, filterPokemonType, getAllPokemon, orderPokemon } from '../../redux/actions';
 import Card from '../Card/Card';
 import styles from './Pokemones.module.css';
 import Pagination from '../Pagination/Pagination';
+import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
-const Pokemones = ({ pokemons, length, onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, setCurrentPage }) => {
+const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, setCurrentPage, allPokemons }) => {
 
-    // const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
-    // const [currentPage, setCurrentPage] = useState(1);
+    const [types, setTypes] = useState([]);
 
+    const [auxFilter, setAuxFilter] = useState(false);
+    const [aux, setAux] = useState(false);
+    
+    const dispatch = useDispatch();
+    
+    const Pokemons = useSelector(state => state.toShow);
+    console.log(Pokemons);
+    const length = Pokemons?.length
+
+    const handleFilter = (event) => {
+        dispatch(filterPokemonType(event.target.value));
+    };
+    
+    const handleOrder = (event) => {
+        dispatch(orderPokemon(event.target.value));
+        setAux(!aux)
+    };
+
+    const handleOrigin = (event) => {
+        dispatch(filterOrigin(event.target.value));
+        
+    };
 
     const lastIndex = currentPage * pokemonsPerPage;
-    const firstIndex = lastIndex - pokemonsPerPage
+    const firstIndex = lastIndex - pokemonsPerPage;
+
+    const onFilters = () => {
+        setAuxFilter(!auxFilter)
+        // dispatch(filterPokemonType());
+    };
 
     useEffect(() => {
         onStart();
+        dispatch(getAllPokemon());
+        axios("https://pokeapi.co/api/v2/type/")
+        .then(({data}) => {
+            setTypes(data.results.map(name=> name.name))
+        })
     }, []);
     
     return(
         <div className={styles.container}>
+            <div className={styles.filterContainer}>
+                <a onClick={onFilters}>Filters</a>
+                {
+                    auxFilter ? <div className={styles.filters}>
+                        <label >By type
+                            <select onChange={handleFilter}>
+                                {
+                                    // eslint-disable-next-line react/prop-types
+                                    types?.map((type, index) => {
+                                        return (
+                                            <option key={index} value={type}>{type}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </label>
+                        <label >Order by
+                            <select onChange={handleOrder}>
+                                <option value="AZ">A-Z</option>
+                                <option value="ZA">Z-A</option>
+                                <option value="A">Ascending attack</option>
+                                <option value="D">Descending attack</option>
+                            </select>
+                        </label>
+                        <label >
+                            Origin
+                            <select onChange={handleOrigin}>
+                                <option value="db">From data base</option>
+                                <option value="api">From API</option>
+                            </select>
+                        </label>
+                    </div> : null
+                }
+            </div>
             <div className={styles.cards}>
                 {
                     // eslint-disable-next-line react/prop-types
-                    pokemons?.map((pokemon, index) => {
+                    Pokemons?.map((pokemon, index) => {
                         return(
                             <Card 
                                 key = {index}

@@ -59,7 +59,7 @@ const Detail = ({getAll}) => {
                     </label>
                 </div>
             </div>
-            <h3>WIGHT: {pokemon.weight}</h3>
+            <h3>WEIGHT: {pokemon.weight}</h3>
             <h4>Id: {pokemon.id}</h4>
 {/* 
             <div>

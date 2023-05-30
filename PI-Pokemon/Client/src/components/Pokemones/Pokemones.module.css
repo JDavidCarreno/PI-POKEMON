@@ -8,6 +8,29 @@
 
 }
 
+.filters {
+    display: flex;
+    /* margin: 10%; */
+    justify-content: space-around;
+    height: fit-content;
+}
+
+select {
+    border-radius: 10%;
+    border: 2px solid white;
+    /* background-color: black; */
+    /* color: white; */
+    padding: 10px;
+    border-radius: 5px;
+    /* font-weight: bold; */
+    transition: all 0.3s ease;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    /* color: white; */
+}
 .cards {
     display: flex;
     flex-direction: row;
@@ -16,3 +39,5 @@
     margin: 20px;
     gap: 1.5rem;
 }
+
+
