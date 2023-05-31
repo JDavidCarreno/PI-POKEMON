@@ -27,7 +27,7 @@ const Pagination = ({pokemonsPerPage, currentPage, setCurrentPage, length}) => {
                 {
                     pageNumbers?.map((noPage) => {
                         return(
-                            <a key={noPage} onClick={() => onSpecificPage(noPage)}>
+                            <a className={currentPage === noPage ? styles.selected: null} key={noPage} onClick={() => onSpecificPage(noPage)}>
                                 {noPage}
                             </a>
                         )

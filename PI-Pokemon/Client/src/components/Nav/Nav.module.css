@@ -1,6 +1,52 @@
+
 .container {
     display: flex;
-    justify-content: center;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 1%;
-    background-color: aquamarine;
+    background-color: #FF0000;
+    padding: 10px;
+    border: solid;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .allbtn {
+    border: solid;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 10px 20px;
+  }
+
+  .allbtn:hover {
+    cursor: pointer;
+    background-color:rgb(212, 214, 216);
+  }
+  
+  
+  .img {
+    width: 70px;
+    border-radius: 1.5rem;
+    margin-left: 2%;
+  }
+  
+  .logo-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @media (max-width: 767px) and (min-width: 300px) {
+    .container {
+        margin: 0;
+
+    }
 }
+
+
+  
+  
+  
+  

@@ -22,8 +22,6 @@ const Detail = ({getAll}) => {
         })
     }, [id])
 
-    console.log(pokemon);
-
     return (
         <div>
             <h1>{pokemon.name}`s details</h1>
@@ -61,10 +59,6 @@ const Detail = ({getAll}) => {
             </div>
             <h3>WEIGHT: {pokemon.weight}</h3>
             <h4>Id: {pokemon.id}</h4>
-{/* 
-            <div>
-                <button onClick={() => getAll()}>See all pokemons!</button>
-            </div> */}
         </div>
     )
 };

@@ -10,27 +10,49 @@
 
 .filters {
     display: flex;
-    /* margin: 10%; */
+    margin: 10%;
     justify-content: space-around;
     height: fit-content;
+    margin-top: 2%;
+    background-color: #F8EC99;
+    padding: 1%;
+    margin-bottom: 15%;
+    border-radius: 2%;
 }
+
+.aFilters {
+    display: inline-block;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.aFilters:hover {
+    background-color: black;
+    color: white;
+}
+
+.aFilters:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px black; 
+  }
 
 select {
     border-radius: 10%;
     border: 2px solid white;
-    /* background-color: black; */
-    /* color: white; */
     padding: 10px;
     border-radius: 5px;
-    /* font-weight: bold; */
     transition: all 0.3s ease;
 }
 
 label {
     display: flex;
     flex-direction: column;
-    /* color: white; */
 }
+
 .cards {
     display: flex;
     flex-direction: row;
@@ -39,5 +61,31 @@ label {
     margin: 20px;
     gap: 1.5rem;
 }
+.divBotones {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@media (max-width: 767px) and (min-width: 300px) {
+    .cards {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      flex-wrap: wrap;
+    }
+  
+    .filters {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      align-self: center;
+      margin: auto;
+      margin-top: 5%;
+    }
+  }
+  
 
 

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getPokemonByName } from '../../redux/actions';
 
 // eslint-disable-next-line react/prop-types
-const SearchBar = () => {
+const SearchBar = ({setCurrentPage}) => {
 
     let [name, setName] = useState('');
 
@@ -17,12 +17,10 @@ const SearchBar = () => {
 
     return(
         <div className={styles.container}>
-            <input type="search"  onChange={handleChange} value={name}/>
-            <button onClick={() => {dispatch(getPokemonByName(name)); setName('')}}><img src={searchLogo} className={styles.button} alt="searchLogo" /></button>
+            <input type="search"  onChange={handleChange} value={name} placeholder='Search...'/>
+            <button className={styles.btn} onClick={() => {dispatch(getPokemonByName(name)); setName(''); setCurrentPage(1)}}><img src={searchLogo} className={styles.button} alt="searchLogo" /></button>
         </div>
     )
 };
 
 export default SearchBar;
-
-// () => {onSearch(name)

@@ -1,6 +1,7 @@
 .container {
     display: flex;
     justify-content: center;
+    gap: .3rem;
     
 }
 
@@ -10,4 +11,14 @@
 
 .button:hover {
     cursor: pointer;
+}
+
+.btn {
+    border: solid;
+    border-radius: 2rem;
+}
+
+input {
+    border: solid;
+    border-radius: 1rem;
 }

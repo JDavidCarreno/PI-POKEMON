@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterOrigin, filterPokemonType, getAllPokemon, orderPokemon } from '../../redux/actions';
+import { Link } from "react-router-dom";
 import Card from '../Card/Card';
 import styles from './Pokemones.module.css';
 import Pagination from '../Pagination/Pagination';
@@ -18,7 +19,6 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
     const dispatch = useDispatch();
     
     const Pokemons = useSelector(state => state.toShow);
-    console.log(Pokemons);
     const length = Pokemons?.length
 
     const handleFilter = (event) => {
@@ -55,7 +55,12 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
     return(
         <div className={styles.container}>
             <div className={styles.filterContainer}>
-                <a onClick={onFilters}>Filters</a>
+                <div className={styles.divBotones}>
+                    <Link to='/form'>
+                        <a className={styles.aFilters}>Create</a>
+                    </Link>
+                    <a className={styles.aFilters} onClick={onFilters}>Filters</a>
+                </div>
                 {
                     auxFilter ? <div className={styles.filters}>
                         <label >By type
@@ -72,6 +77,7 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
                         </label>
                         <label >Order by
                             <select onChange={handleOrder}>
+                                <option value="" defaultValue={true}>...</option>
                                 <option value="AZ">A-Z</option>
                                 <option value="ZA">Z-A</option>
                                 <option value="A">Ascending attack</option>
@@ -81,6 +87,7 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
                         <label >
                             Origin
                             <select onChange={handleOrigin}>
+                                <option value=""  defaultValue={true}>...</option>
                                 <option value="db">From data base</option>
                                 <option value="api">From API</option>
                             </select>

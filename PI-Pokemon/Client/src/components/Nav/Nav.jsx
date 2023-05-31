@@ -1,12 +1,12 @@
-
+import img from '../../assets/img.png'
 import { useDispatch } from "react-redux";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Nav.module.css"
 import { getAllAgain, getAllPokemon } from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Nav = () => {
+const Nav = ({setCurrentPage}) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -17,11 +17,15 @@ const Nav = () => {
         navigate('/home')
     }
 
+    const location = useLocation();
 
     return (
         <div className={styles.container}>
-            <SearchBar/>
-            <button onClick={getAll}>ALL</button>
+            <img className={styles.img} src={img} alt="pokemon-logo" />
+            {
+                location.pathname !== '/form' && <SearchBar setCurrentPage={setCurrentPage}/> 
+            }
+            <button className={styles.allbtn} onClick={getAll}> SEE ALL </button>
         </div>
     )
 };

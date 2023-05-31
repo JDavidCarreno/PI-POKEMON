@@ -1,4 +1,4 @@
-const { Pokemon } = require('../db');
+const { Pokemon, Type } = require('../db');
 const axios = require('axios');
 
 
@@ -7,19 +7,15 @@ const getPokemon = async(req, res) => {
         const { name } = req.query;
 
         if(!name) {
-          const pokemons = await Pokemon.findAll();
-          // const { data }  = await axios("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1281");
+          const pokemons = await Pokemon.findAll({
+            include: Type
+          });
 
-          // const { results } = data
-
-          // return res.status(200).json(results.concat(pokemons))
-          // let infoUrl = [];
-
-          // for(let i = 183; i <= 1281; i + 183) {
-          //   const url = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${i - 183}limit=${i}`)
-          //   const infoUrl1 = url.data.results;
-          //   infoUrl = infoUrl.concat(infoUrl1);
-          // }
+          const pokemonTypes = pokemons.map(pokemon => {
+            const types = pokemon.types.map(type => type.name);
+            return { id: pokemon.id, name: pokemon.name, image: pokemon.image, hp: pokemon.hp, attack: pokemon.attack, defense: pokemon.defense, speed: pokemon.speed, weight: pokemon.weight, types}
+          })
+          
 
           const url = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=60')
             const infoUrl = url.data.results;
@@ -42,7 +38,7 @@ const getPokemon = async(req, res) => {
                 })
             );
 
-            return res.json(pokeInfo.concat(pokemons));
+            return res.json(pokeInfo.concat(pokemonTypes));
           
         };
 
@@ -67,7 +63,7 @@ const getPokemon = async(req, res) => {
         return res.status(200).json(findPokemon);
         
     } catch (error) {
-        return res.status(400).json({error: 'Pokemon not found'})
+        return res.status(400).json({error: error.message})
     }
 };
 

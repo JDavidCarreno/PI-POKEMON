@@ -14,3 +14,9 @@ a:hover {
     cursor: pointer;
     transform: translateY(-5px);
 }
+
+.selected {
+    border: solid thin red;
+    padding: 1.75px 2.75px;
+
+}
