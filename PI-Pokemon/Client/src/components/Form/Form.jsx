@@ -14,26 +14,38 @@ const Form = () => {
         attack: null,
         defense: null,
         speed: null,
-        weigth: null,
+        weight: null,
         types: []
     });
 
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({});
+    const [aux, setAux] = useState(false)
 
     const handleChange = (event) => {
-        setInput({
-            ...input,
-            types: [...types, event.target.value],
-            [event.target.name]: event.target.value
-        });
-
+        const { name, value } = event.target;
+        setAux(true)
+    
+        if (name === "types") {
+            const selectedTypes = Array.from(event.target.selectedOptions, (option) => Number(option.value));
+            setInput((prevInput) => ({
+                ...prevInput,
+                types: selectedTypes
+            }));
+        } else {
+            setInput((prevInput) => ({
+                ...prevInput,
+                [name]: value
+            }));
+        }
+    
         setErrors(validations({
             ...input,
-            [event.target.name]: event.target.value
-        }))
+            [name]: value
+        }));
     };
+    
 
     const handleSubmit = async (event) => {
         if (Object.keys(errors).length === 0) {
@@ -45,7 +57,7 @@ const Form = () => {
             } catch (error) {
                 alert('This pokemos is already around!')
             }
-    }}
+    }};
 
     useEffect(() => {
         axios("https://pokeapi.co/api/v2/type/")
@@ -55,7 +67,7 @@ const Form = () => {
     }, [])
 
     return(
-        <div>
+        <div className={styles.container}>
             <form onSubmit={handleSubmit}>
                 <label >Name:*</label>
                 <input type="text" name="name"  onChange={handleChange}/>
@@ -85,19 +97,19 @@ const Form = () => {
                 <label >Speed:</label>
                 <input type="number" name="speed"  onChange={handleChange}/>
                 <label >Weigth:</label>
-                <input type="number" name="weigth" onChange={handleChange}/>
+                <input type="number" name="weight" onChange={handleChange}/>
                 <label >Select types:</label>
-                <select multiple onChange={handleChange}>
+                <select multiple onChange={handleChange} name="types">
                     {
                         types?.map((type, index) => {
                             return (
-                                <option key={index} value={index + 1}>{type}</option>
+                                <option key={index} value={(index + 1)}>{type}</option>
                             )
                         })
                     }
                 </select>
 
-                <button type="submit">CREATE</button>
+                <button type="submit" disabled={Object.keys(errors).length !== 0 || aux === false}>CREATE</button>
                 
             </form>
         </div>

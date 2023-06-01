@@ -19,20 +19,22 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
     const dispatch = useDispatch();
     
     const Pokemons = useSelector(state => state.toShow);
-    const length = Pokemons?.length
+    const length = Pokemons?.length;
 
     const handleFilter = (event) => {
         dispatch(filterPokemonType(event.target.value));
+        setCurrentPage(1)
     };
     
     const handleOrder = (event) => {
         dispatch(orderPokemon(event.target.value));
         setAux(!aux)
+        setCurrentPage(1)
     };
 
     const handleOrigin = (event) => {
         dispatch(filterOrigin(event.target.value));
-        
+        setCurrentPage(1)
     };
 
     const lastIndex = currentPage * pokemonsPerPage;
@@ -57,9 +59,9 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
             <div className={styles.filterContainer}>
                 <div className={styles.divBotones}>
                     <Link to='/form'>
-                        <a className={styles.aFilters}>Create</a>
+                        <span className={styles.aFilters}>Create</span>
                     </Link>
-                    <a className={styles.aFilters} onClick={onFilters}>Filters</a>
+                    <span className={styles.aFilters} onClick={onFilters}>Filters</span>
                 </div>
                 {
                     auxFilter ? <div className={styles.filters}>
