@@ -10,6 +10,7 @@
     border: solid;
     margin-left: 5%;
     margin-right: 5%;
+    height: 4vh;
   }
   
   .allbtn {
@@ -29,6 +30,8 @@
     width: 70px;
     border-radius: 1.5rem;
     margin-left: 2%;
+    height: 50px;
+    width: 50px;
   }
   
   .logo-container {
@@ -36,12 +39,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    height: 10px;
   }
 
   @media (max-width: 767px) and (min-width: 300px) {
     .container {
         margin: 0;
 
+    }
+
+    .allbtn {
+      height: 50px;
+      padding: 5px 10px;
     }
 }
 

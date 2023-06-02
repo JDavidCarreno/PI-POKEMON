@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Pokemon } = require('../db');
+const { Pokemon, Type } = require('../db');
 
 const getPoById = async(req, res) => {
     try {
@@ -9,12 +9,15 @@ const getPoById = async(req, res) => {
             const pokemon = await Pokemon.findOne({
                 where: {
                     id
-                }
+                },
+                include: Type
             });
 
             if(!pokemon) return res.status(402).send('not found');
 
-            return res.status(200).json(pokemon);
+            const types = pokemon.types.map(type => type.name);
+
+            return res.status(200).json({ id: pokemon.id, name: pokemon.name, image: pokemon.image, hp: pokemon.hp, attack: pokemon.attack, defense: pokemon.defense, speed: pokemon.speed, weight: pokemon.weight, types});
         };
 
         const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${id}/`);

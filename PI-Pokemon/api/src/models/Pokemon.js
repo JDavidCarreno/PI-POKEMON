@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
     speed: {
       type: DataTypes.INTEGER
     },
-    weigth: {
+    weight: {
       type: DataTypes.INTEGER
     },
   }, {timestamps: false});

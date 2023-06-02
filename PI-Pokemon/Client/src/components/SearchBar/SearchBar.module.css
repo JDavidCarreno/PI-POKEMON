@@ -2,11 +2,14 @@
     display: flex;
     justify-content: center;
     gap: .3rem;
-    
+    height: 40px;
 }
 
 .button {
     width: 30px;
+    height: 30px;
+    margin: 0;
+    border:  transparent;
 }
 
 .button:hover {

@@ -33,6 +33,7 @@
 .aFilters:hover {
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 .aFilters:focus {

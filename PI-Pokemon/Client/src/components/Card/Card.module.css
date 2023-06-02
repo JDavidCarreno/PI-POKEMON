@@ -20,6 +20,10 @@
     transform: translateY(-5px);
 }
 
+h2{
+    margin-top: 2%;
+}
+
 .powerContainer {
     position: absolute;
     bottom: 0;
@@ -28,14 +32,15 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 1rem;
+    gap: .5rem;
     border: solid thin;
     margin: 2%;
     background-color: #FFDE00;
+    padding: 1%;
 }
 
 .types {
-    gap: .5rem;
+    gap: 0;
 }
 
 .img {
@@ -44,6 +49,8 @@
     border: solid;
     padding: 8px 16px;
     background-color: #fff;
+    margin-top: 8%;
+    margin-bottom: 0;
 }
 
 @media (max-width: 1060px) and (min-width: 300px) {
