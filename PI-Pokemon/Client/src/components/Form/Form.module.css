@@ -1,5 +1,36 @@
-form {
-    margin-top: 5%;
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    border: solid;
+    border-radius: 1rem;
+    padding: 5%;
+    width: fit-content;
+    margin: 2%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+
+.part {
+    margin: 9%;
+}
+
+.select {
+    border: solid;
+    width: 130px;
+}
+
+.btn {
+    margin-top: 10%;
+    padding: 16px 20px;
+    border: solid;
+}
+
+.btn:hover{
+    cursor: pointer;
 }
 
 

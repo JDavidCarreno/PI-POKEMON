@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { getAllPokemon } from "./redux/actions";
 import { useEffect, useState } from 'react';
 import Detail from './components/Detail/Detail';
+import axios from 'axios';
 
 function App() {
 
@@ -15,12 +16,17 @@ function App() {
   
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
+  const [aux, setAux] = useState(false);
 
 
   const dipatch = useDispatch();
 
-  const onStart = () => {
+  const onStart = async() => {
     dipatch(getAllPokemon());
+    if (aux === false) {
+      axios.get('http://localhost:3001/types');
+      setAux(true)
+    }
   };
 
   useEffect(() => {

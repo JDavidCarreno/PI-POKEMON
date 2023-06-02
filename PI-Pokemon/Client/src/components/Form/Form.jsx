@@ -67,51 +67,69 @@ const Form = () => {
     }, [])
 
     return(
-        <div className={styles.container}>
-            <form onSubmit={handleSubmit}>
-                <label >Name:*</label>
-                <input type="text" name="name"  onChange={handleChange}/>
-                {
-                    errors.name && (<p>{errors.name}</p>)
-                }
-                <label >Image:* copy the link</label>
-                <input type="text" name="image"  onChange={handleChange}/>
-                {
-                    errors.image && (<p>{errors.image}</p>)
-                }
-                <label >Hp:*</label>
-                <input type="number" name="hp"  onChange={handleChange}/>
-                {
-                    errors.hp && (<p>{errors.hp}</p>) 
-                }
-                <label >Attack:*</label>
-                <input type="number" name="attack"  onChange={handleChange}/>
-                {
-                    errors.attack && (<p>{errors.attack}</p>)
-                }
-                <label >Defense:*</label>
-                <input type="number" name="defense"  onChange={handleChange}/>
-                {
-                    errors.defense && (<p>{errors.defense}</p>)
-                }
-                <label >Speed:</label>
-                <input type="number" name="speed"  onChange={handleChange}/>
-                <label >Weigth:</label>
-                <input type="number" name="weight" onChange={handleChange}/>
-                <label >Select types:</label>
-                <select multiple onChange={handleChange} name="types">
-                    {
-                        types?.map((type, index) => {
-                            return (
-                                <option key={index} value={(index + 1)}>{type}</option>
-                            )
-                        })
-                    }
-                </select>
+        <div className={styles.all}>
+            <div className={styles.container}>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.part}>
+                        <label >Name:*</label>
+                        <input type="text" name="name"  onChange={handleChange}/>
+                        {
+                            errors.name && (<p>{errors.name}</p>)
+                        }
+                    </div>
+                    <div className={styles.part}>
+                        <label >Image:* paste the link</label>
+                        <input type="text" name="image"  onChange={handleChange}/>
+                        {
+                            errors.image && (<p>{errors.image}</p>)
+                        }
+                    </div>
+                    <div className={styles.part}>
+                        <label >Hp:*</label>
+                        <input type="number" name="hp"  onChange={handleChange}/>
+                        {
+                            errors.hp && (<p>{errors.hp}</p>) 
+                        }
+                    </div>
+                    <div className={styles.part}>
+                        <label >Attack:*</label>
+                        <input type="number" name="attack"  onChange={handleChange}/>
+                        {
+                            errors.attack && (<p>{errors.attack}</p>)
+                        }
+                    </div>
+                    <div className={styles.part}>
+                        <label >Defense:*</label>
+                        <input type="number" name="defense"  onChange={handleChange}/>
+                        {
+                            errors.defense && (<p>{errors.defense}</p>)
+                        }
+                    </div>
+                    <div className={styles.part}>
+                        <label >Speed:</label>
+                        <input type="number" name="speed"  onChange={handleChange}/>
+                    </div>
+                    <div className={styles.part}>
+                        <label >Weigth:</label>
+                        <input type="number" name="weight" onChange={handleChange}/>
+                    </div>
+                    <div className={styles.part}>
+                        <label >Select types:</label>
+                        <select multiple onChange={handleChange} name="types" className={styles.select}>
+                            {
+                                types?.map((type, index) => {
+                                    return (
+                                        <option key={index} value={(index + 1)}>{type}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div>
 
-                <button type="submit" disabled={Object.keys(errors).length !== 0 || aux === false}>CREATE</button>
+                    <button className={styles.btn} type="submit" disabled={Object.keys(errors).length !== 0 || aux === false}>CREATE</button>
                 
-            </form>
+                 </form>
+            </div>
         </div>
     )
 };

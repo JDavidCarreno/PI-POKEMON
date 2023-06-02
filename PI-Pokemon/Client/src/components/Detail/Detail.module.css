@@ -1,8 +1,68 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerAll {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    justify-content: space-around;
+}
+
+.figure {
+    border: double;
+    border-color: red;
+    border-radius: 2rem;
+    width: 600px;
+    height: 600px;
+    padding: 5%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: transform 0.2s ease-in-out;
+}
+
+.figure:hover {
+    transform: translateY(-5px);
+}
+
+.rightPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid;
+    border-radius: 2rem;
+    width: 39%;
+    padding: 8%;
+    background-color: #FF0000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.rightPart:hover {
+    transform: translateY(-5px);
+}
+
+.types {
+    border: solid;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.p {
+    font-size: large;
+    color: black;
+}
+
 .containerStats {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
+    border: solid;
+    border-radius: 1rem;
+    background-color: white;
+
 }
 
 .containerLabels {
@@ -10,4 +70,44 @@
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
+}
+
+.final {
+    border: solid;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+label {
+    font-weight: bold;
+}
+
+@media (max-width: 1060px) and (min-width: 300px) {
+    .containerAll {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rightPart {
+        margin: auto;
+        width: fit-content;
+        padding: 5%;
+    }
+
+    .types {
+        padding: 5%;
+    }
+
+    .containerStats {
+        padding: 5%;
+    }
+
+    .final {
+        padding: 5%;
+    }
+
+    .figure {
+        width: 300px;
+        height: 300px;
+    }
 }
