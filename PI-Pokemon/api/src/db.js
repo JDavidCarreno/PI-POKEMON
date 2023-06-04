@@ -4,21 +4,21 @@ const fs = require('fs');
 const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DIPLOY } = process.env;
 
-// const sequelize = new Sequelize(
-//    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
-//    {
-//       logging: false, 
-//       native: false, 
-//    }
-// );
-
 const sequelize = new Sequelize(
-   DB_DIPLOY,
+   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
    {
       logging: false, 
       native: false, 
    }
 );
+
+// const sequelize = new Sequelize(
+//    DB_DIPLOY,
+//    {
+//       logging: false, 
+//       native: false, 
+//    }
+// );
 
 const basename = path.basename(__filename);
 
