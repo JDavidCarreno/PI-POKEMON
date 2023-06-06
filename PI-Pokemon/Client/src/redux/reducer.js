@@ -1,10 +1,5 @@
 import { ALL_POKEMON, POKEMON_BY_NAME, FILTER_POKEMON_TYPE, ORDER_POKEMON, GET_ALL, ORIGIN } from "./actions";
 
-// const getInfo = async(url) => {
-//     const info = await axios(url);
-//     const data = info.data
-// }
-
 const initialState = {
     allPokemons: [],
     poke: [{}],

@@ -11,7 +11,6 @@ export const getAllPokemon = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios(`http://localhost:3001/pokemons`);
-            // const eData =  data.map(element => element)
             
             return dispatch({
                 type: ALL_POKEMON,
