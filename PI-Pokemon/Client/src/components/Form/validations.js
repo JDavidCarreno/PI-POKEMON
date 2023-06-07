@@ -13,12 +13,24 @@ const validations = (data) => {
         error.hp = "This field is required."
     }
 
+    if ( data.hp < 1 || data.hp > 100) {
+        error.hp = "Hp must be between 1 and 100"
+    }
+
     if ( !data.attack ) {
         error.attack = "This field is required."
     }
 
+    if ( data.attack < 0 || data.attack > 150) {
+        error.attack = "Attack must be between 0 and 150"
+    }
+
     if( !data.defense ) {
         error.defense = "This field is required."
+    }
+
+    if ( data.defense < 0 || data.defense > 150) {
+        error.defense = "Defense must be between 0 and 150"
     }
 
     return error
