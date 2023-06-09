@@ -14,6 +14,7 @@ function App() {
 
   const location = useLocation();
   
+  // eslint-disable-next-line no-unused-vars
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
   const [aux, setAux] = useState(false);
@@ -31,6 +32,7 @@ function App() {
 
   useEffect(() => {
     dipatch(getAllPokemon());
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
   return (
@@ -40,7 +42,7 @@ function App() {
       }
       <Routes>
         <Route path='/' element={<Landing onStart={onStart}/>}/>
-        <Route path='/home' element={<Pokemones onStart={onStart} length={length}  pokemonsPerPage={pokemonsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} setPokemonsPerPage={setPokemonsPerPage}/>}/>
+        <Route path='/home' element={<Pokemones onStart={onStart} length={length}  pokemonsPerPage={pokemonsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />}/>
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/form' element={<Form />}/>
       </Routes>

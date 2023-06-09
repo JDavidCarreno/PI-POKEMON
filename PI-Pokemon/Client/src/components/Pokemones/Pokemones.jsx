@@ -9,7 +9,7 @@ import Pagination from '../Pagination/Pagination';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
-const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, setCurrentPage, allPokemons }) => {
+const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setCurrentPage }) => {
 
     const [types, setTypes] = useState([]);
 
@@ -42,7 +42,6 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
 
     const onFilters = () => {
         setAuxFilter(!auxFilter)
-        // dispatch(filterPokemonType());
     };
 
     useEffect(() => {
@@ -52,6 +51,7 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
         .then(({data}) => {
             setTypes(data.results.map(name=> name.name))
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return(
@@ -67,6 +67,7 @@ const Pokemones = ({ onStart, pokemonsPerPage, currentPage, setPokemonsPerPage, 
                     auxFilter ? <div className={styles.filters}>
                         <label >By type
                             <select onChange={handleFilter}>
+                                <option value="" defaultValue={true}>...</option>
                                 {
                                     // eslint-disable-next-line react/prop-types
                                     types?.map((type, index) => {

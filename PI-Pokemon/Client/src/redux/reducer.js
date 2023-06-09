@@ -54,6 +54,7 @@ const reducer = (state = initialState, action) => {
 
             return{
                 ...state,
+                // toShow: fFilter
                 toShow: fFilter
             }
 
