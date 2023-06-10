@@ -1,10 +1,10 @@
 const { Type } = require('../db');
 
-const createType = (req, res) => {
+const createType = async (req, res) => {
     try {
         const { id, name } = req.body;
         
-        const newType = Type.create({id, name});
+        const newType = await Type.create({id, name});
 
         return res.status(200).json(newType)
 
